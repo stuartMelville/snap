@@ -1,15 +1,12 @@
 package com.cardgames;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class StandardCards implements Comparable<StandardCards> {
 
-	private Map<Integer,String> cardValues = new HashMap<>();
-	private List<String> cardSuits = new ArrayList<>();	
+	public static final Map<Integer,String> cardValues = new HashMap<>();
+	public  static final Map<Integer,String> cardSuits = new HashMap<>();	
 
 	public StandardCards() {
 		cardValues.put(2, "Two");
@@ -26,36 +23,36 @@ public class StandardCards implements Comparable<StandardCards> {
 		cardValues.put(13, "King");		
 		cardValues.put(14, "Ace");		
 
-		cardSuits.add("Clubs");
-		cardSuits.add("Diamonds");
-		cardSuits.add("Hearts");
-		cardSuits.add("Spades");		
+		cardSuits.put(1,"Clubs");
+		cardSuits.put(2,"Diamonds");
+		cardSuits.put(3,"Hearts");
+		cardSuits.put(4,"Spades");		
 		
 	}
 
-	private CardNumber cardNumber;
-	private CardSuit cardSuit;
+	private int cardNumber;
+	private int cardSuit;
 
 
 
 	public int compareTo(StandardCards o) {
 		if (this.getCardNumber() == o.getCardNumber()) {
 			return 0;
-		} else if (this.getCardNumber().getValue() > o.getCardNumber().getValue()) {
+		} else if (this.getCardNumber() > o.getCardNumber()) {
 			return 1;
 		} else
 			return -1;
 	}
-	public CardNumber getCardNumber() {
+	public int getCardNumber() {
 		return cardNumber;
 	}
 
-	public CardSuit getCardSuit() {
+	public int getCardSuit() {
 		return cardSuit;
 	}
 
 
 	public String toString() {
-		return cardNumber + " of " + cardSuit;
+		return cardValues.get(cardNumber) + " of " + cardSuits.get(cardSuit);
 	}
 }

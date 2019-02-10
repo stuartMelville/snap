@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.cardgames.Card.CardNumber;
-import com.cardgames.Card.CardSuit;
 
 public class Pack {
-	private List<Card> pack;
-	private Card cardType;
-
-	public Pack(Card cardType) {
-		this.cardType = cardType;
-	}
+	private List<StandardCards> pack;
+//	private Card cardType;
+//
+//	public Pack(StandardCards cardType) {
+//		this.cardType = cardType;
+//	}
 	
-	public List<Card> createPack() {
+	public List<StandardCards> createPack() {
 		List<Card> cards = new ArrayList<Card>();
 
-		for (CardSuit suit : cardType.CardSuit.values()) {
+		for (CardSuit suit : StandardCards.get) {
 			for (CardNumber cNums : CardNumber.values()) {
 				Card cd = new Card();
 				cd.cardNumber = cNums;

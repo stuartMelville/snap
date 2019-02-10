@@ -7,7 +7,7 @@ import java.util.List;
 public class Card implements Comparable<Card> {
 
 
-	private enum CardNumber {
+	public enum CardNumber {
 		Two(2), 
 		Three(3), 
 		Four(4), 
@@ -38,7 +38,7 @@ public class Card implements Comparable<Card> {
 		}
 	}
 
-	private enum CardSuit {
+	public enum CardSuit {
 		Clubs, 
 		Diamonds, 
 		Hearts, 
@@ -49,7 +49,26 @@ public class Card implements Comparable<Card> {
 	private CardSuit cardSuit;
 
 
+	public static List<Card> createPack() {
+		List<Card> cards = new ArrayList<Card>();
 
+		for (CardSuit suit : CardSuit.values()) {
+			for (CardNumber cNums : CardNumber.values()) {
+				Card cd = new Card();
+				cd.cardNumber = cNums;
+				cd.cardSuit = suit;
+				cards.add(cd);
+			}
+		}
+		return cards;
+	}
+
+	public static List<Card> shuffleCards(List<Card> cards) {
+		Collections.shuffle(cards);
+		return cards;
+	}
+
+	
 	public int compareTo(Card o) {
 		if (this.getCardNumber() == o.getCardNumber()) {
 			return 0;
